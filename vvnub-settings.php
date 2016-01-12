@@ -35,17 +35,31 @@ class VVNUB_Settings {
     public $options;
 
     private static $defaults = array(
-		'vvnub_dispw'		=> 'above',
-		'vvnub_flogo'		=> 'coa',
-		'vvnub_satadd'		=> '1',
-		'vvnub_bgcol'		=> '#ffffff',
-		'vvnub_fgcol1'		=> '#000000',
-		'vvnub_fgcol2'		=> '#999999',
-		'vvnub_linkcol'		=> '#999999',
-		'vvnub_width'		=> '100',
-		'vvnub_wunit'		=> '%',
-		'vvnub_reset'		=> '0',
-		'vvnub_clearout'	=> '0'
+		'vvnub_dispw'				=> 'above',
+		'vvnub_flogo'				=> 'coa',
+		'vvnub_satadd'				=> '1',
+		'vvnub_bgcol'				=> '#ffffff',
+		'vvnub_fgcol1'				=> '#000000',
+		'vvnub_fgcol2'				=> '#999999',
+		'vvnub_linkcol'				=> '#999999',
+		'vvnub_width'				=> '100',
+		'vvnub_wunit'				=> '%',
+		'vvnub_showlink_1'			=> '1',
+		'vvnub_showlink_2'			=> '1',
+		'vvnub_showlink_3'			=> '1',
+		'vvnub_showlink_4'			=> '1',
+		'vvnub_showlink_5'			=> '1',
+		'vvnub_showlink_6'			=> '1',
+		'vvnub_showlink_7'			=> '1',
+		'vvnub_showlink_8'			=> '1',
+		'vvnub_customlink_1_disp'	=> 'hide',
+		'vvnub_customlink_1_label'	=> '',
+		'vvnub_customlink_1_url'	=> '',
+		'vvnub_customlink_2_disp'	=> 'hide',
+		'vvnub_customlink_2_label'	=> '',
+		'vvnub_customlink_2_url'	=> '',
+		'vvnub_reset'				=> '0',
+		'vvnub_clearout'			=> '0'
 	);
 
 
@@ -128,6 +142,13 @@ class VVNUB_Settings {
 		);
 
 		add_settings_section(
+			'vvnub_links_section', // ID
+			__( 'Choose Link Options', 'vv-nubranding' ), // Title
+			array( $this, 'vvnub_links_section_callback' ), // Callback
+			'vv_nubranding_options' // page
+		);
+
+		add_settings_section(
 			'vvnub_admin_section', // ID
 			__( 'Administrative Options', 'vv-nubranding' ), // Title
 			array( $this, 'vvnub_admin_section_callback' ), // Callback
@@ -205,6 +226,122 @@ class VVNUB_Settings {
 			'vv_nubranding_options',
 			'vvnub_options_section'
 		);
+
+
+
+		add_settings_field( // link 1
+			'vvnub_showlink_1',
+			__( 'Show MyNipissing link', 'vv-nubranding' ),
+			array( $this, 'vvnub_showlink_1_render' ),
+			'vv_nubranding_options',
+			'vvnub_links_section'
+		);
+
+		add_settings_field( // link 2
+			'vvnub_showlink_2',
+			__( 'Show WebAdvisor link', 'vv-nubranding' ),
+			array( $this, 'vvnub_showlink_2_render' ),
+			'vv_nubranding_options',
+			'vvnub_links_section'
+		);
+
+		add_settings_field( // link 3
+			'vvnub_showlink_3',
+			__( 'Show Blackboard link', 'vv-nubranding' ),
+			array( $this, 'vvnub_showlink_3_render' ),
+			'vv_nubranding_options',
+			'vvnub_links_section'
+		);
+
+		add_settings_field( // link 4
+			'vvnub_showlink_4',
+			__( 'Show Library link', 'vv-nubranding' ),
+			array( $this, 'vvnub_showlink_4_render' ),
+			'vv_nubranding_options',
+			'vvnub_links_section'
+		);
+
+		add_settings_field( // link 5
+			'vvnub_showlink_5',
+			__( 'Show Phone Directory link', 'vv-nubranding' ),
+			array( $this, 'vvnub_showlink_5_render' ),
+			'vv_nubranding_options',
+			'vvnub_links_section'
+		);
+
+		add_settings_field( // link 6
+			'vvnub_showlink_6',
+			__( 'Show NU Mail link', 'vv-nubranding' ),
+			array( $this, 'vvnub_showlink_6_render' ),
+			'vv_nubranding_options',
+			'vvnub_links_section'
+		);
+
+		add_settings_field( // link 7
+			'vvnub_showlink_7',
+			__( 'Show Health & Safety link', 'vv-nubranding' ),
+			array( $this, 'vvnub_showlink_7_render' ),
+			'vv_nubranding_options',
+			'vvnub_links_section'
+		);
+
+		add_settings_field( // link 8
+			'vvnub_showlink_8',
+			__( 'Show Site Map link', 'vv-nubranding' ),
+			array( $this, 'vvnub_showlink_8_render' ),
+			'vv_nubranding_options',
+			'vvnub_links_section'
+		);
+
+		add_settings_field( // custom link 1 display
+			'vvnub_customlink_1_disp',
+			__( 'Display custom link 1', 'vv-nubranding' ),
+			array( $this, 'vvnub_customlink_1_disp_render' ),
+			'vv_nubranding_options',
+			'vvnub_links_section'
+		);
+
+		add_settings_field( // custom link 1 label
+			'vvnub_customlink_1_label',
+			__( 'Label for custom link 1', 'vv-nubranding' ),
+			array( $this, 'vvnub_customlink_1_label_render' ),
+			'vv_nubranding_options',
+			'vvnub_links_section'
+		);
+
+		add_settings_field( // custom link 1 url
+			'vvnub_customlink_1_url',
+			__( 'URL for custom link 1', 'vv-nubranding' ),
+			array( $this, 'vvnub_customlink_1_url_render' ),
+			'vv_nubranding_options',
+			'vvnub_links_section'
+		);
+
+		add_settings_field( // custom link 2 display
+			'vvnub_customlink_2_disp',
+			__( 'Display custom link 2', 'vv-nubranding' ),
+			array( $this, 'vvnub_customlink_2_disp_render' ),
+			'vv_nubranding_options',
+			'vvnub_links_section'
+		);
+
+		add_settings_field( // custom link 2 label
+			'vvnub_customlink_2_label',
+			__( 'Label for custom link 2', 'vv-nubranding' ),
+			array( $this, 'vvnub_customlink_2_label_render' ),
+			'vv_nubranding_options',
+			'vvnub_links_section'
+		);
+
+		add_settings_field( // custom link 2 url
+			'vvnub_customlink_2_url',
+			__( 'URL for custom link 2', 'vv-nubranding' ),
+			array( $this, 'vvnub_customlink_2_url_render' ),
+			'vv_nubranding_options',
+			'vvnub_links_section'
+		);
+
+
 
 		add_settings_field( // reset defaults
 			'vvnub_reset',
@@ -297,6 +434,116 @@ class VVNUB_Settings {
 		<?php
 	}
 
+
+
+	// RENDER THE MYNIPISSING LINK
+	public function vvnub_showlink_1_render(  ) {
+		?>
+		<input type='checkbox' name='vvnub_settings[vvnub_showlink_1]' id='vvnub_settings[vvnub_showlink_1]' <?php checked( $this->options->vvnub_showlink_1, 1 ); ?> value='1' />
+		<?php
+	}
+
+	// RENDER THE WEBADVISOR LINK
+	public function vvnub_showlink_2_render(  ) {
+		?>
+		<input type='checkbox' name='vvnub_settings[vvnub_showlink_2]' id='vvnub_settings[vvnub_showlink_2]' <?php checked( $this->options->vvnub_showlink_2, 1 ); ?> value='1' />
+		<?php
+	}
+
+	// RENDER THE BLACKBOARD LINK
+	public function vvnub_showlink_3_render(  ) {
+		?>
+		<input type='checkbox' name='vvnub_settings[vvnub_showlink_3]' id='vvnub_settings[vvnub_showlink_3]' <?php checked( $this->options->vvnub_showlink_3, 1 ); ?> value='1' />
+		<?php
+	}
+
+	// RENDER THE LIBRARY LINK
+	public function vvnub_showlink_4_render(  ) {
+		?>
+		<input type='checkbox' name='vvnub_settings[vvnub_showlink_4]' id='vvnub_settings[vvnub_showlink_4]' <?php checked( $this->options->vvnub_showlink_4, 1 ); ?> value='1' />
+		<?php
+	}
+
+	// RENDER THE PHONE DIRECTORY LINK
+	public function vvnub_showlink_5_render(  ) {
+		?>
+		<input type='checkbox' name='vvnub_settings[vvnub_showlink_5]' id='vvnub_settings[vvnub_showlink_5]' <?php checked( $this->options->vvnub_showlink_5, 1 ); ?> value='1' />
+		<?php
+	}
+
+	// RENDER THE NU MAIL LINK
+	public function vvnub_showlink_6_render(  ) {
+		?>
+		<input type='checkbox' name='vvnub_settings[vvnub_showlink_6]' id='vvnub_settings[vvnub_showlink_6]' <?php checked( $this->options->vvnub_showlink_6, 1 ); ?> value='1' />
+		<?php
+	}
+
+	// RENDER THE HEALTH & SAFETY LINK
+	public function vvnub_showlink_7_render(  ) {
+		?>
+		<input type='checkbox' name='vvnub_settings[vvnub_showlink_7]' id='vvnub_settings[vvnub_showlink_7]' <?php checked( $this->options->vvnub_showlink_7, 1 ); ?> value='1' />
+		<?php
+	}
+
+	// RENDER THE SITE MAP LINK
+	public function vvnub_showlink_8_render(  ) {
+		?>
+		<input type='checkbox' name='vvnub_settings[vvnub_showlink_8]' id='vvnub_settings[vvnub_showlink_8]' <?php checked( $this->options->vvnub_showlink_8, 1 ); ?> value='1' />
+		<?php
+	}
+
+	// RENDER THE CUSTOM LINK 1 DISPLAY OPTION
+	public function vvnub_customlink_1_disp_render(  ) {
+		?>
+		<select name='vvnub_settings[vvnub_customlink_1_disp]' id='vvnub_settings[vvnub_customlink_1_disp]'>
+			<option value='hide' <?php selected( $this->options->vvnub_customlink_1_disp, 'hide' ); ?>>Hide</option>
+			<option value='col1' <?php selected( $this->options->vvnub_customlink_1_disp, 'col1' ); ?>>Column 1</option>
+			<option value='col2' <?php selected( $this->options->vvnub_customlink_1_disp, 'col2' ); ?>>Column 2</option>
+		</select>
+		<?php
+	}
+
+	// RENDER THE CUSTOM LINK 1 LABEL
+	public function vvnub_customlink_1_label_render(  ) {
+		?>
+		<input type='text' name='vvnub_settings[vvnub_customlink_1_label]' id='vvnub_settings[vvnub_customlink_1_label]' value='<?php echo $this->options->vvnub_customlink_1_label ?>' size='16' maxlength='30' />
+		<?php
+	}
+
+	// RENDER THE CUSTOM LINK 1 URL
+	public function vvnub_customlink_1_url_render(  ) {
+		?>
+		<input type='text' name='vvnub_settings[vvnub_customlink_1_url]' id='vvnub_settings[vvnub_customlink_1_url]' value='<?php echo $this->options->vvnub_customlink_1_url ?>' size='32' maxlength='150' />
+		<?php
+	}
+
+	// RENDER THE CUSTOM LINK 2 DISPLAY OPTION
+	public function vvnub_customlink_2_disp_render(  ) {
+		?>
+		<select name='vvnub_settings[vvnub_customlink_2_disp]' id='vvnub_settings[vvnub_customlink_2_disp]'>
+			<option value='hide' <?php selected( $this->options->vvnub_customlink_2_disp, 'hide' ); ?>>Hide</option>
+			<option value='col1' <?php selected( $this->options->vvnub_customlink_2_disp, 'col1' ); ?>>Column 1</option>
+			<option value='col2' <?php selected( $this->options->vvnub_customlink_2_disp, 'col2' ); ?>>Column 2</option>
+		</select>
+		<?php
+	}
+
+	// RENDER THE CUSTOM LINK 2 LABEL
+	public function vvnub_customlink_2_label_render(  ) {
+		?>
+		<input type='text' name='vvnub_settings[vvnub_customlink_2_label]' id='vvnub_settings[vvnub_customlink_2_label]' value='<?php echo $this->options->vvnub_customlink_2_label ?>' size='16' maxlength='30' />
+		<?php
+	}
+
+	// RENDER THE CUSTOM LINK 2 URL
+	public function vvnub_customlink_2_url_render(  ) {
+		?>
+		<input type='text' name='vvnub_settings[vvnub_customlink_2_url]' id='vvnub_settings[vvnub_customlink_2_url]' value='<?php echo $this->options->vvnub_customlink_2_url ?>' size='32' maxlength='150' />
+		<?php
+	}
+
+
+
 	// RENDER THE RESET TO DEFAULT DISPLAY OPTIONS
 	public function vvnub_reset_render(  ) {
 		?>
@@ -332,12 +579,28 @@ class VVNUB_Settings {
 		}
 
 		// just passing these right through as they are fixed input values
-		$valid_fields['vvnub_dispw'] = $fields['vvnub_dispw'];
-		$valid_fields['vvnub_flogo'] = $fields['vvnub_flogo'];
-		$valid_fields['vvnub_satadd'] = $fields['vvnub_satadd'];
-		$valid_fields['vvnub_wunit'] = $fields['vvnub_wunit'];
+		$valid_fields['vvnub_dispw'] 				= $fields['vvnub_dispw'];
+		$valid_fields['vvnub_flogo'] 				= $fields['vvnub_flogo'];
+		$valid_fields['vvnub_satadd'] 				= $fields['vvnub_satadd'];
+		$valid_fields['vvnub_wunit'] 				= $fields['vvnub_wunit'];
+		$valid_fields['vvnub_showlink_1'] 			= $fields['vvnub_showlink_1'];
+		$valid_fields['vvnub_showlink_2'] 			= $fields['vvnub_showlink_2'];
+		$valid_fields['vvnub_showlink_3'] 			= $fields['vvnub_showlink_3'];
+		$valid_fields['vvnub_showlink_4'] 			= $fields['vvnub_showlink_4'];
+		$valid_fields['vvnub_showlink_5'] 			= $fields['vvnub_showlink_5'];
+		$valid_fields['vvnub_showlink_6'] 			= $fields['vvnub_showlink_6'];
+		$valid_fields['vvnub_showlink_7'] 			= $fields['vvnub_showlink_7'];
+		$valid_fields['vvnub_showlink_8'] 			= $fields['vvnub_showlink_8'];
+
+		$valid_fields['vvnub_customlink_1_disp'] 	= $fields['vvnub_customlink_1_disp'];
+		$valid_fields['vvnub_customlink_1_label'] 	= sanitize_text_field( $fields['vvnub_customlink_1_label'] );
+		$valid_fields['vvnub_customlink_1_url'] 	= esc_url_raw( $fields['vvnub_customlink_1_url'] );
+		$valid_fields['vvnub_customlink_2_disp'] 	= $fields['vvnub_customlink_2_disp'];
+		$valid_fields['vvnub_customlink_2_label'] 	= sanitize_text_field( $fields['vvnub_customlink_2_label'] );
+		$valid_fields['vvnub_customlink_2_url'] 	= esc_url_raw( $fields['vvnub_customlink_2_url'] );
+
 		// always zero this one back out
-		$valid_fields['vvnub_reset'] = 0;
+		$valid_fields['vvnub_reset'] 	= 0;
 		$valid_fields['vvnub_clearout'] = $fields['vvnub_clearout'];
 
 		// validate background color
@@ -421,7 +684,12 @@ class VVNUB_Settings {
 
     // CALLBACK FOR SETTINGS SECTION
 	public function vvnub_settings_section_callback(  ) {
-		echo __( 'You may customize the following options', 'vv-nubranding' );
+		echo __( 'You may customize the following display options.', 'vv-nubranding' );
+	}
+
+    // CALLBACK FOR LINKS SECTION
+	public function vvnub_links_section_callback(  ) {
+		echo __( 'You may customize the following links options.', 'vv-nubranding' );
 	}
 
     // CALLBACK FOR ADMIN SECTION
@@ -433,6 +701,7 @@ class VVNUB_Settings {
 		if (get_option( 'vvnub_settings' ) == FALSE) {
 			update_option ('vvnub_settings', self::$defaults);
 		}
+		update_option ('vvnub_version', VVNUB_VERSION);
 	}
 
 	public static function vvnub_deactivate() {
@@ -440,6 +709,7 @@ class VVNUB_Settings {
 		$clear = $opts->vvnub_clearout;
 		if ($clear == 1) {
 			delete_option('vvnub_settings');
+			delete_option('vvnub_version');
 		}
 	}
 
@@ -448,5 +718,3 @@ class VVNUB_Settings {
 
 VVNUB_Settings::get_instance();
 
-
-?>

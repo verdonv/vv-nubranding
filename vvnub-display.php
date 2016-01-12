@@ -141,16 +141,72 @@ class VVNUB_Display {
 		<?php } ?>
 			<div id="nuFooterLinks">
 				<div style="float: right; text-align: left; padding: 0 1em 0 1em;">
-					<a href="http://www.nipissingu.ca/directories/Pages/TelephoneDirectory.aspx">Phone Directory</a><br>
-					<a href="http://mail.nipissingu.ca/">NU Mail</a><br>
-					<a href="http://www.nipissingu.ca/departments/human-resources/health-and-safety">Health &amp; Safety</a><br>
-					<a href="http://www.nipissingu.ca/information/Pages/Site-Map.aspx">Site Map</a><br>
+					<?php if ($this->options->vvnub_showlink_5) { ?>
+						<a href="http://www.nipissingu.ca/directories/Pages/TelephoneDirectory.aspx">Phone Directory</a><br>
+					<?php } ?>
+					<?php if ($this->options->vvnub_showlink_6) { ?>
+						<a href="http://mail.nipissingu.ca/">NU Mail</a><br>
+					<?php } ?>
+					<?php if ($this->options->vvnub_showlink_7) { ?>
+						<a href="http://www.nipissingu.ca/departments/human-resources/health-and-safety">Health &amp; Safety</a><br>
+					<?php } ?>
+					<?php if ($this->options->vvnub_showlink_8) { ?>
+						<a href="http://www.nipissingu.ca/information/Pages/Site-Map.aspx">Site Map</a><br>
+					<?php } ?>
+					<?php 
+						if ($this->options->vvnub_customlink_1_disp == 'col2') { 
+							echo ('<a href="' . esc_url ($this->options->vvnub_customlink_1_url) . '">');
+							if ($this->options->vvnub_customlink_1_label) {
+								echo (sanitize_text_field ($this->options->vvnub_customlink_1_label));
+							} else {
+								echo (esc_url_raw ($this->options->vvnub_customlink_1_url));
+							}
+							echo ('</a><br>');
+						} 
+						if ($this->options->vvnub_customlink_2_disp == 'col2') { 
+							echo ('<a href="' . esc_url ($this->options->vvnub_customlink_2_url) . '">');
+							if ($this->options->vvnub_customlink_2_label) {
+								echo (sanitize_text_field ($this->options->vvnub_customlink_2_label));
+							} else {
+								echo (esc_url_raw ($this->options->vvnub_customlink_2_url));
+							}
+							echo ('</a><br>');
+						} 
+					?>
 				</div>
 				<div style="float: right; text-align: left; padding: 0 1em 0 1em;">
-					<a href="http://my.nipissingu.ca/">MyNipissing</a><br>
-					<a href="http://webadvisor.nipissingu.ca/">WebAdvisor</a><br>
-					<a href="http://learn.nipissingu.ca/">Blackboard</a><br>
-					<a href="http://www.eclibrary.ca/">Library</a><br>
+					<?php if ($this->options->vvnub_showlink_1) { ?>
+						<a href="http://my.nipissingu.ca/">MyNipissing</a><br>
+					<?php } ?>
+					<?php if ($this->options->vvnub_showlink_2) { ?>
+						<a href="http://webadvisor.nipissingu.ca/">WebAdvisor</a><br>
+					<?php } ?>
+					<?php if ($this->options->vvnub_showlink_3) { ?>
+						<a href="http://learn.nipissingu.ca/">Blackboard</a><br>
+					<?php } ?>
+					<?php if ($this->options->vvnub_showlink_4) { ?>
+						<a href="http://www.eclibrary.ca/">Library</a><br>
+					<?php } ?>
+					<?php 
+						if ($this->options->vvnub_customlink_1_disp == 'col1') { 
+							echo ('<a href="' . esc_url ($this->options->vvnub_customlink_1_url) . '">');
+							if ($this->options->vvnub_customlink_1_label) {
+								echo (sanitize_text_field ($this->options->vvnub_customlink_1_label));
+							} else {
+								echo (esc_url_raw ($this->options->vvnub_customlink_1_url));
+							}
+							echo ('</a><br>');
+						} 
+						if ($this->options->vvnub_customlink_2_disp == 'col1') { 
+							echo ('<a href="' . esc_url ($this->options->vvnub_customlink_2_url) . '">');
+							if ($this->options->vvnub_customlink_2_label) {
+								echo (sanitize_text_field ($this->options->vvnub_customlink_2_label));
+							} else {
+								echo (esc_url_raw ($this->options->vvnub_customlink_2_url));
+							}
+							echo ('</a><br>');
+						} 
+					?>
 				</div>
 			</div>
 		</div>
@@ -169,4 +225,3 @@ class VVNUB_Display {
 
 VVNUB_Display::get_instance();
 
-?>
