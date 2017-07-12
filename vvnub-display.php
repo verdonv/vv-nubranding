@@ -94,10 +94,10 @@ class VVNUB_Display {
 			width: <?php echo $this->options->vvnub_width . $this->options->vvnub_wunit ?>;
 			margin: 0 auto 0 auto;
 		}
-		#nuFooter1 {
+		#nuFooterLogo {
 			background-image: url(<?php echo VVNUB__PLUGIN_URL ?>images/footer_<?php echo $this->options->vvnub_flogo ?>.png);
 		}
-		.footerAddressBlock {
+		#satAddressBlock {
 			color: <?php echo $this->options->vvnub_fgcol2 ?>;
 		}
 		#nuFooterWrap a, #nuFooterWrap a:active, #nuFooterWrap a:visited {
@@ -108,10 +108,10 @@ class VVNUB_Display {
 	<div id="nuFooterWrap">
 		<div style="clear: both">
 		</div>
-		<div id="nuFooter1">
-			&nbsp;
-		</div>
-		<div id="nuFooter2">
+		<div id="nuFooterInner">
+			<div id="nuFooterLogo">
+				&nbsp;
+			</div>
 			<div id="nuFooterAddress">
 				<strong><a href="http://www.nipissingu.ca/">Nipissing University</a></strong> <br>
 				100 College Drive, Box 5002 <br>
@@ -122,7 +122,7 @@ class VVNUB_Display {
 				TTY: 877.688.5507<br>
 			</div>
 		<?php if ($this->options->vvnub_satadd) { ?>
-			<div class="footerAddressBlock">
+			<div id="satAddressBlock">
 				<strong><a href="http://www.nipissingu.ca/departments/brantford">Brantford Campus</a></strong><br>
 				50 Wellington St.<br>
 				Brantford, ON, Canada<br>
@@ -130,17 +130,9 @@ class VVNUB_Display {
 				Tel: 519.752.1524<br>
 				Fax: 519.752.8372<br>
 			</div>
-			<div class="footerAddressBlock">
-				<strong><a href="http://www.nipissingu.ca/departments/muskoka">Muskoka Campus</a></strong><br>
-				125 Wellington Street<br>
-				Bracebridge, ON, Canada<br>
-				P1L 1E2<br>
-				Tel: 705.645.2921<br>
-				Fax: 705.645.2922<br>
-			</div>
 		<?php } ?>
 			<div id="nuFooterLinks">
-				<div style="float: right; text-align: left; padding: 0 1em 0 1em;">
+				<div id="nuLinks1">
 					<?php if ($this->options->vvnub_showlink_5) { ?>
 						<a href="http://www.nipissingu.ca/directories/Pages/TelephoneDirectory.aspx">Phone Directory</a><br>
 					<?php } ?>
@@ -174,7 +166,7 @@ class VVNUB_Display {
 						} 
 					?>
 				</div>
-				<div style="float: right; text-align: left; padding: 0 1em 0 1em;">
+				<div id="nuLinks2">
 					<?php if ($this->options->vvnub_showlink_1) { ?>
 						<a href="http://my.nipissingu.ca/">MyNipissing</a><br>
 					<?php } ?>
@@ -209,9 +201,6 @@ class VVNUB_Display {
 					?>
 				</div>
 			</div>
-		</div>
-		<div id="nuFooter3">
-			&nbsp;
 		</div>
 		<div style="clear: both">
 		</div>

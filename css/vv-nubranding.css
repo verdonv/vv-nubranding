@@ -14,36 +14,29 @@
     border-top: 1px solid #ddd;
 }
 
-#nuFooter1 {
-    background-image: url(../images/footer_nul.png);
-    background-repeat: no-repeat;
-    background-position: 5px 0;
-    width: 81px;
-    min-height: 102px; 
-    float: left;
-    display: inline;
-    margin: 0;
-    padding: 0;
-}
-
-#nuFooter2 {
-    width: 87%;
-/*    height: 130px; */
+#nuFooterInner {
+    width: 99%;
     float: left;
     display: inline;
     margin: 0;
     padding: 0.9em 0 0 0;
     text-align: right;
     line-height: 1.5em;
+    border: 0px solid red;
 }
 
-#nuFooter3 {
-    width: 8px;
-/*    height: 130px; */
-    float: left;
-    display: inline;
-    margin: 0;
-    padding: 0;
+#nuFooterLogo
+{
+	background-image: url(../images/footer_nul.png);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	width: 81px;
+	min-height: 102px;
+	float: left;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	border: 0px #CCC solid;
 }
 
 #nuFooterAddress {
@@ -52,21 +45,47 @@
     padding: 0 1em 1em 1.4em;
 }
 
-.footerAddressBlock {
+#satAddressBlock {
     float: left;
     text-align: left;
     padding: 0 1em 1em 0.5em;
     color: #999;
 }
 
-.footerAddressBlock a, .footerAddressBlock a:link, .footerAddressBlock a:hover, .footerAddressBlock a:visited {
+#satAddressBlock a, #satAddressBlock a:link, #satAddressBlock a:hover, #satAddressBlock a:visited {
     color: #999;
 }
 
-.footerAddressBlock a:hover {
+#satAddressBlock a:hover {
     text-decoration: underline;
 }
 
 #nuFooterLinks {
     text-align: right;
+    border: 0px solid yellow;
 }
+
+#nuLinks1 {
+	float: right; 
+	text-align: left; 
+	padding: 0 1em 0 1em;
+}
+
+#nuLinks2 {
+	float: right; 
+	text-align: left; 
+	padding: 0 1em 0 1em;
+}
+
+@media screen and (max-width: 835px)  {
+	#nuLinks1, #nuLinks2 {
+		float:left;
+		width:auto;
+		padding-left: 0;
+	}
+	#nuFooterLinks, #satAddressBlock {
+		clear: both;
+		margin-left: 90px;
+	}
+}
+
