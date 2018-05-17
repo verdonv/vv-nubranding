@@ -37,10 +37,8 @@ class VVNUB_Settings {
     private static $defaults = array(
 		'vvnub_dispw'				=> 'above',
 		'vvnub_flogo'				=> 'coa',
-		'vvnub_satadd'				=> '1',
 		'vvnub_bgcol'				=> '#ffffff',
 		'vvnub_fgcol1'				=> '#000000',
-		'vvnub_fgcol2'				=> '#999999',
 		'vvnub_linkcol'				=> '#999999',
 		'vvnub_width'				=> '100',
 		'vvnub_wunit'				=> '%',
@@ -171,14 +169,6 @@ class VVNUB_Settings {
 			'vvnub_options_section'
 		);
 
-		add_settings_field( // sattelite addresses
-			'vvnub_satadd',
-			__( 'Show satellite campuses', 'vv-nubranding' ),
-			array( $this, 'vvnub_satadd_render' ),
-			'vv_nubranding_options',
-			'vvnub_options_section'
-		);
-
 		add_settings_field( // bg colour
 			'vvnub_bgcol',
 			__( 'Background colour', 'vv-nubranding' ),
@@ -191,14 +181,6 @@ class VVNUB_Settings {
 			'vvnub_fgcol1',
 			__( 'Foreground colour', 'vv-nubranding' ),
 			array( $this, 'vvnub_fgcol1_render' ),
-			'vv_nubranding_options',
-			'vvnub_options_section'
-		);
-
-		add_settings_field( // address foreground colour
-			'vvnub_fgcol2',
-			__( 'Secondary Address colour', 'vv-nubranding' ),
-			array( $this, 'vvnub_fgcol2_render' ),
 			'vv_nubranding_options',
 			'vvnub_options_section'
 		);
@@ -382,13 +364,6 @@ class VVNUB_Settings {
 		<?php
 	}
 
-	// RENDER THE ADDRESS BLOCK DISPLAY OPTIONS
-	public function vvnub_satadd_render(  ) {
-		?>
-		<input type='checkbox' name='vvnub_settings[vvnub_satadd]' id='vvnub_settings[vvnub_satadd]' <?php checked( $this->options->vvnub_satadd, 1 ); ?> value='1' />
-		<?php
-	}
-
 	// RENDER THE BG COLOUR DISPLAY OPTIONS
 	public function vvnub_bgcol_render(  ) {
 		?>
@@ -400,13 +375,6 @@ class VVNUB_Settings {
 	public function vvnub_fgcol1_render(  ) {
 		?>
 		<input type='text' name='vvnub_settings[vvnub_fgcol1]' id='vvnub_settings[vvnub_fgcol1]' value='<?php echo $this->options->vvnub_fgcol1 ?>' class='vvnub-color-picker' />
-		<?php
-	}
-
-	// RENDER THE ALT FOREGROUND COLOUR DISPLAY OPTIONS
-	public function vvnub_fgcol2_render(  ) {
-		?>
-		<input type='text' name='vvnub_settings[vvnub_fgcol2]' id='vvnub_settings[vvnub_fgcol2]' value='<?php echo $this->options->vvnub_fgcol2 ?>' class='vvnub-color-picker' />
 		<?php
 	}
 
@@ -581,7 +549,6 @@ class VVNUB_Settings {
 		// just passing these right through as they are fixed input values
 		$valid_fields['vvnub_dispw'] 				= $fields['vvnub_dispw'];
 		$valid_fields['vvnub_flogo'] 				= $fields['vvnub_flogo'];
-		$valid_fields['vvnub_satadd'] 				= $fields['vvnub_satadd'];
 		$valid_fields['vvnub_wunit'] 				= $fields['vvnub_wunit'];
 		$valid_fields['vvnub_showlink_1'] 			= $fields['vvnub_showlink_1'];
 		$valid_fields['vvnub_showlink_2'] 			= $fields['vvnub_showlink_2'];
@@ -627,16 +594,6 @@ class VVNUB_Settings {
 			$valid_fields['vvnub_fgcol1'] = $this->options->vvnub_fgcol1;
 		} else {
 			$valid_fields['vvnub_fgcol1'] = $fg1;
-		}
-
-		// validate fg2 color
-		$fg2 = trim( $fields['vvnub_fgcol2'] );
-		$fg2 = strip_tags( stripslashes( $fg2 ) );
-		if( FALSE === $this->check_color( $fg2 ) ) {
-			add_settings_error( 'vvnub_settings', 'vvnub_fg2_error', 'Insert a valid color for Secondary Address', 'error' );
-			$valid_fields['vvnub_fgcol2'] = $this->options->vvnub_fgcol2;
-		} else {
-			$valid_fields['vvnub_fgcol2'] = $fg2;
 		}
 
 		// validate link color

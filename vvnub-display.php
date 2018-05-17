@@ -97,9 +97,6 @@ class VVNUB_Display {
 		#nuFooterLogo {
 			background-image: url(<?php echo VVNUB__PLUGIN_URL ?>images/footer_<?php echo $this->options->vvnub_flogo ?>.png);
 		}
-		#satAddressBlock {
-			color: <?php echo $this->options->vvnub_fgcol2 ?>;
-		}
 		#nuFooterWrap a, #nuFooterWrap a:active, #nuFooterWrap a:visited {
 			color: <?php echo $this->options->vvnub_linkcol ?>;
 		}
@@ -121,16 +118,6 @@ class VVNUB_Display {
 				Fax: 705.474.1947<br>
 				TTY: 877.688.5507<br>
 			</div>
-		<?php if ($this->options->vvnub_satadd) { ?>
-			<div id="satAddressBlock">
-				<strong><a href="http://www.nipissingu.ca/departments/brantford">Brantford Campus</a></strong><br>
-				50 Wellington St.<br>
-				Brantford, ON, Canada<br>
-				N3T 2L6<br>
-				Tel: 519.752.1524<br>
-				Fax: 519.752.8372<br>
-			</div>
-		<?php } ?>
 			<div id="nuFooterLinks">
 				<div id="nuLinks1">
 					<?php if ($this->options->vvnub_showlink_5) { ?>

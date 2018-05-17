@@ -2,9 +2,10 @@
 /*
 Plugin Name: Verdon's NU Branding
 Description: A plugin that adds various Nipissing University branding to other themes. In this first version, a footer with official links and a few configuration options.
-Version: 1.2.0
+Version: 1.3.0
 Author: Verdon Vaillancourt
 Author URI: http://verdon.ca/
+Update URL: https://github.com/verdonv/vv-nubranding/
 License: GPLv2 or later
 Text Domain: vv-nubranding
 */
@@ -32,7 +33,7 @@ if ( !function_exists( 'add_action' ) ) {
 }
 
 /* setup a few constants */
-define( 'VVNUB_VERSION', '1.1.0' );
+define( 'VVNUB_VERSION', '1.3.0' );
 define( 'VVNUB__MINIMUM_WP_VERSION', '4.0' );
 define( 'VVNUB__PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'VVNUB__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
@@ -69,6 +70,11 @@ if ($installed_ver != VVNUB_VERSION) {
 			update_option( 'vvnub_version', VVNUB_VERSION );
 		break;
 		case '1.1.0':
+		break;
+		case '1.2.0':
+		break;
+		case '1.3.0':
+			// do I need to remove satAdd setting and vvnub_fgcol2 setting or just ignore them?
 		break;
 	endswitch;
 }
