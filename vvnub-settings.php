@@ -360,6 +360,7 @@ class VVNUB_Settings {
 		<select name='vvnub_settings[vvnub_flogo]' id='vvnub_settings[vvnub_flogo]'>
 			<option value='coa' <?php selected( $this->options->vvnub_flogo, 'coa' ); ?>>Coat of Arms</option>
 			<option value='nul' <?php selected( $this->options->vvnub_flogo, 'nul' ); ?>>NU Lakers</option>
+			<option value='sch' <?php selected( $this->options->vvnub_flogo, 'sch' ); ?>>Schulich</option>
 		</select>
 		<?php
 	}

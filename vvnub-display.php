@@ -95,7 +95,11 @@ class VVNUB_Display {
 			margin: 0 auto 0 auto;
 		}
 		#nuFooterLogo {
-			background-image: url(<?php echo VVNUB__PLUGIN_URL ?>images/footer_<?php echo $this->options->vvnub_flogo ?>.png);
+			<?php if ($this->options->vvnub_flogo !== 'sch') { ?>
+				background-image: url(<?php echo VVNUB__PLUGIN_URL ?>images/footer_<?php echo $this->options->vvnub_flogo ?>.png);
+			<?php } else { ?>
+					width: 0px;
+			<?php } ?>
 		}
 		#nuFooterWrap a, #nuFooterWrap a:active, #nuFooterWrap a:visited {
 			color: <?php echo $this->options->vvnub_linkcol ?>;
@@ -110,27 +114,30 @@ class VVNUB_Display {
 				&nbsp;
 			</div>
 			<div id="nuFooterAddress">
-				<strong><a href="http://www.nipissingu.ca/">Nipissing University</a></strong> <br>
-				100 College Drive, Box 5002 <br>
-				North Bay, ON, Canada <br>
-				P1B 8L7 <br>
-				Tel: 705.474.3450<br>
-				Fax: 705.474.1947<br>
-				TTY: 877.688.5507<br>
+				<?php if ($this->options->vvnub_flogo == 'sch') { ?>
+					<img src="<?php echo VVNUB__PLUGIN_URL ?>images/footer_<?php echo $this->options->vvnub_flogo ?>.png" width="409" height="49" alt="Nipissing | Schulich" /><br /><br />
+				<?php } ?>
+				<strong><a href="https://www.nipissingu.ca/">Nipissing University</a></strong> <br />
+				100 College Drive, Box 5002 <br />
+				North Bay, ON, Canada <br />
+				P1B 8L7 <br />
+				Tel: 705.474.3450<br />
+				Fax: 705.474.1947<br />
+				TTY: 877.688.5507<br />
 			</div>
 			<div id="nuFooterLinks">
 				<div id="nuLinks1">
 					<?php if ($this->options->vvnub_showlink_5) { ?>
-						<a href="http://www.nipissingu.ca/directories/Pages/TelephoneDirectory.aspx">Phone Directory</a><br>
+						<a href="https://www.nipissingu.ca/users">Phone Directory</a><br />
 					<?php } ?>
 					<?php if ($this->options->vvnub_showlink_6) { ?>
-						<a href="http://mail.nipissingu.ca/">NU Mail</a><br>
+						<a href="https://mail.nipissingu.ca/">NU Mail</a><br />
 					<?php } ?>
 					<?php if ($this->options->vvnub_showlink_7) { ?>
-						<a href="http://www.nipissingu.ca/departments/human-resources/health-and-safety">Health &amp; Safety</a><br>
+						<a href="https://www.nipissingu.ca/departments/human-resources/health-and-safety">Health &amp; Safety</a><br />
 					<?php } ?>
 					<?php if ($this->options->vvnub_showlink_8) { ?>
-						<a href="http://www.nipissingu.ca/information/Pages/Site-Map.aspx">Site Map</a><br>
+						<a href="https://www.nipissingu.ca/site-information/site-map">Site Map</a><br />
 					<?php } ?>
 					<?php 
 						if ($this->options->vvnub_customlink_1_disp == 'col2') { 
@@ -140,7 +147,7 @@ class VVNUB_Display {
 							} else {
 								echo (esc_url_raw ($this->options->vvnub_customlink_1_url));
 							}
-							echo ('</a><br>');
+							echo ('</a><br />');
 						} 
 						if ($this->options->vvnub_customlink_2_disp == 'col2') { 
 							echo ('<a href="' . esc_url ($this->options->vvnub_customlink_2_url) . '">');
@@ -149,22 +156,22 @@ class VVNUB_Display {
 							} else {
 								echo (esc_url_raw ($this->options->vvnub_customlink_2_url));
 							}
-							echo ('</a><br>');
+							echo ('</a><br />');
 						} 
 					?>
 				</div>
 				<div id="nuLinks2">
 					<?php if ($this->options->vvnub_showlink_1) { ?>
-						<a href="http://my.nipissingu.ca/">MyNipissing</a><br>
+						<a href="https://my.nipissingu.ca/">MyNipissing</a><br />
 					<?php } ?>
 					<?php if ($this->options->vvnub_showlink_2) { ?>
-						<a href="http://webadvisor.nipissingu.ca/">WebAdvisor</a><br>
+						<a href="https://webadvisor.nipissingu.ca/">WebAdvisor</a><br />
 					<?php } ?>
 					<?php if ($this->options->vvnub_showlink_3) { ?>
-						<a href="http://learn.nipissingu.ca/">Blackboard</a><br>
+						<a href="https://learn.nipissingu.ca/">Blackboard</a><br />
 					<?php } ?>
 					<?php if ($this->options->vvnub_showlink_4) { ?>
-						<a href="http://www.eclibrary.ca/">Library</a><br>
+						<a href="https://www.eclibrary.ca/">Library</a><br />
 					<?php } ?>
 					<?php 
 						if ($this->options->vvnub_customlink_1_disp == 'col1') { 
@@ -174,7 +181,7 @@ class VVNUB_Display {
 							} else {
 								echo (esc_url_raw ($this->options->vvnub_customlink_1_url));
 							}
-							echo ('</a><br>');
+							echo ('</a><br />');
 						} 
 						if ($this->options->vvnub_customlink_2_disp == 'col1') { 
 							echo ('<a href="' . esc_url ($this->options->vvnub_customlink_2_url) . '">');
@@ -183,7 +190,7 @@ class VVNUB_Display {
 							} else {
 								echo (esc_url_raw ($this->options->vvnub_customlink_2_url));
 							}
-							echo ('</a><br>');
+							echo ('</a><br />');
 						} 
 					?>
 				</div>
