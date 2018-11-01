@@ -2,7 +2,7 @@
 /*
 Plugin Name: Verdon's NU Branding
 Description: A plugin that adds various Nipissing University branding to other themes. In this first version, a footer with official links and a few configuration options.
-Version: 1.3.0
+Version: 1.4.1
 Author: Verdon Vaillancourt
 Author URI: http://verdon.ca/
 Update URL: https://github.com/verdonv/vv-nubranding/
